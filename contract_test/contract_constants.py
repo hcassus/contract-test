@@ -11,7 +11,14 @@ IMC_DEZENOVE_PONTO_SETENTA_E_DOIS = 19.72
 IMC_VINTE_E_QUATRO_PONTO_NOVENTA_E_UM = 24.91
 IMC_VINTE_E_SEIS_PONTO_TRES = 26.3
 
-
+JOGADOR_170_75 = {'altura_cm': 170, 'peso_kg': 75}
+JOGADOR_160_75 = {'altura_cm': 160, 'peso_kg': 75}
+JOGADOR_170_140 = {'altura_cm': 170, 'peso_kg': 140}
+JOGADOR_170_57 = {'altura_cm': 170, 'peso_kg': 57}
+JOGADOR_170_76 = {'altura_cm': 170, 'peso_kg': 76}
+JOGADOR_170_72 = {'altura_cm': 170, 'peso_kg': 72}
+JOGADOR_170_131 = {'altura_cm': 170, 'peso_kg': 131}
+JOGADOR_170_151 = {'altura_cm': 170, 'peso_kg': 151}
 
 
 
