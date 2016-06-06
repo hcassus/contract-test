@@ -1,7 +1,7 @@
 """
-Jogadores devem ter mais de 1.70m
-Jogadores devem pesar menos de 130 Kg
-Jogadores devem ter um IMC entre 21 e 26
+Players must be taller than 1.70m
+Players must weigh less than 130 Kg
+Players' BMI must be between 21 and 26
 """
 
 class HeightEntity(object):
