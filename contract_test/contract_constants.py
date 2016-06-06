@@ -1,24 +1,24 @@
-UM_METRO_E_SESSENTA = 1.60
-UM_METRO_E_SETENTA = 1.70
+ONE_POINT_SIX_METERS = 1.60
+ONE_POINT_SEVEN_METERS = 1.70
 
-SETENTA_E_DOIS_QUILOS = 72
-SETENTA_E_SEIS_QUILOS = 76
-CINQUENTA_E_SETE_QUILOS = 57
-CENTO_E_QUARENTA_QUILOS = 140
-SETENTA_E_CINCO_QUILOS = 75
+SEVENTY_TWO_KILOS = 72
+SEVENTY_SIX_KILOS = 76
+FIFTY_SEVEN_KILOS = 57
+ONE_HUNDRED_FORTY_KILOS = 140
+SEVENTY_FIVE_KILOS = 75
 
-IMC_DEZENOVE_PONTO_SETENTA_E_DOIS = 19.72
-IMC_VINTE_E_QUATRO_PONTO_NOVENTA_E_UM = 24.91
-IMC_VINTE_E_SEIS_PONTO_TRES = 26.3
+BMI_NINETEEN_POINT_SEVENTY_TWO = 19.72
+BMI_TWENTY_FOUR_POINT_NINETY_ONE = 24.91
+BMI_TWENTY_SIX_POINT_THREE = 26.3
 
-JOGADOR_170_75 = {'altura_cm': 170, 'peso_kg': 75}
-JOGADOR_160_75 = {'altura_cm': 160, 'peso_kg': 75}
-JOGADOR_170_140 = {'altura_cm': 170, 'peso_kg': 140}
-JOGADOR_170_57 = {'altura_cm': 170, 'peso_kg': 57}
-JOGADOR_170_76 = {'altura_cm': 170, 'peso_kg': 76}
-JOGADOR_170_72 = {'altura_cm': 170, 'peso_kg': 72}
-JOGADOR_170_131 = {'altura_cm': 170, 'peso_kg': 131}
-JOGADOR_170_151 = {'altura_cm': 170, 'peso_kg': 151}
+PLAYER_170_75 = {'height_cm': 170, 'weight_kg': 75}
+PLAYER_160_75 = {'height_cm': 160, 'weight_kg': 75}
+PLAYER_170_140 = {'height_cm': 170, 'weight_kg': 140}
+PLAYER_170_57 = {'height_cm': 170, 'weight_kg': 57}
+PLAYER_170_76 = {'height_cm': 170, 'weight_kg': 76}
+PLAYER_170_72 = {'height_cm': 170, 'weight_kg': 72}
+PLAYER_170_131 = {'height_cm': 170, 'weight_kg': 131}
+PLAYER_170_151 = {'height_cm': 170, 'weight_kg': 151}
 
 
 
