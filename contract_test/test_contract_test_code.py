@@ -5,63 +5,63 @@ from mock.mock import create_autospec
 from mockextras import when
 
 from contract_constants import *
-from production_code import AlturaEntity, PesoEntity, ImcEntity
+from production_code import HeightEntity, WeightEntity, BmiEntity
 
 
 
 
 @ddt
-class AlturaEntityContractTests(TestCase):
+class HeightEntityContractTests(TestCase):
 
     def setUp(self):
-        self.altura_entity = AlturaEntity()
+        self.height_entity = HeightEntity()
 
     @data(
-        (JOGADOR_170_75, UM_METRO_E_SETENTA),
-        (JOGADOR_170_57, UM_METRO_E_SETENTA),
-        (JOGADOR_170_76, UM_METRO_E_SETENTA),
-        (JOGADOR_170_72, UM_METRO_E_SETENTA),
-        (JOGADOR_160_75, UM_METRO_E_SESSENTA)
+        (PLAYER_170_75, ONE_POINT_SEVEN_METERS),
+        (PLAYER_170_57, ONE_POINT_SEVEN_METERS),
+        (PLAYER_170_76, ONE_POINT_SEVEN_METERS),
+        (PLAYER_170_72, ONE_POINT_SEVEN_METERS),
+        (PLAYER_160_75, ONE_POINT_SIX_METERS)
     )
     @unpack
-    def test_retorna_altura(self, jogador, altura_esperada_metros):
-        self.assertEqual(altura_esperada_metros, self.altura_entity.obter_altura_em_metro(jogador))
+    def test_returns_height(self, player, expected_height_in_meters):
+        self.assertEqual(expected_height_in_meters, self.height_entity.get_height_in_meters(player))
 
 
 @ddt
-class PesoEntityContractTests(TestCase):
+class WeightEntityContractTests(TestCase):
 
     def setUp(self):
-        self.peso_entity = PesoEntity()
+        self.weight_entity = WeightEntity()
 
     @data(
-        (JOGADOR_170_57, CINQUENTA_E_SETE_QUILOS),
-        (JOGADOR_170_75, SETENTA_E_CINCO_QUILOS),
-        (JOGADOR_170_76, SETENTA_E_SEIS_QUILOS),
-        (JOGADOR_170_72, SETENTA_E_DOIS_QUILOS),
-        (JOGADOR_170_140, CENTO_E_QUARENTA_QUILOS)
+        (PLAYER_170_57, FIFTY_SEVEN_KILOS),
+        (PLAYER_170_75, SEVENTY_FIVE_KILOS),
+        (PLAYER_170_76, SEVENTY_SIX_KILOS),
+        (PLAYER_170_72, SEVENTY_TWO_KILOS),
+        (PLAYER_170_140, ONE_HUNDRED_FORTY_KILOS)
     )
     @unpack
-    def test_retorna_peso(self, jogador, peso_retornado):
-        self.assertEqual(peso_retornado, self.peso_entity.obter_peso_jogador(jogador))
+    def test_returns_weight(self, player, expected_weight):
+        self.assertEqual(expected_weight, self.weight_entity.get_weight(player))
 
 
 @ddt
-class ImcEntityContractTests(TestCase):
+class BmiEntityContractTests(TestCase):
 
     def setUp(self):
-        self.altura_entity = create_autospec(AlturaEntity)
-        self.peso_entity = create_autospec(PesoEntity)
-        self.imc_entity = ImcEntity(self.altura_entity, self.peso_entity)
+        self.height_entity = create_autospec(HeightEntity)
+        self.weight_entity = create_autospec(WeightEntity)
+        self.bmi_entity = BmiEntity(self.height_entity, self.weight_entity)
 
     @unpack
     @data(
-        (JOGADOR_170_57, UM_METRO_E_SETENTA, CINQUENTA_E_SETE_QUILOS, IMC_DEZENOVE_PONTO_SETENTA_E_DOIS),
-        (JOGADOR_170_76, UM_METRO_E_SETENTA, SETENTA_E_SEIS_QUILOS, IMC_VINTE_E_SEIS_PONTO_TRES),
-        (JOGADOR_170_72, UM_METRO_E_SETENTA, SETENTA_E_DOIS_QUILOS, IMC_VINTE_E_QUATRO_PONTO_NOVENTA_E_UM)
+        (PLAYER_170_57, ONE_POINT_SEVEN_METERS, FIFTY_SEVEN_KILOS, BMI_NINETEEN_POINT_SEVENTY_TWO),
+        (PLAYER_170_76, ONE_POINT_SEVEN_METERS, SEVENTY_SIX_KILOS, BMI_TWENTY_SIX_POINT_THREE),
+        (PLAYER_170_72, ONE_POINT_SEVEN_METERS, SEVENTY_TWO_KILOS, BMI_TWENTY_FOUR_POINT_NINETY_ONE)
     )
-    def test_retorna_imc(self, jogador, altura, peso, imc_esperado):
-        when(self.altura_entity.obter_altura_em_metro).called_with(jogador).then(altura)
-        when(self.peso_entity.obter_peso_jogador).called_with(jogador).then(peso)
+    def test_returns_bmi(self, player, height, weight, expected_bmi):
+        when(self.height_entity.get_height_in_meters).called_with(player).then(height)
+        when(self.weight_entity.get_weight).called_with(player).then(weight)
 
-        self.assertEqual(imc_esperado, self.imc_entity.calcular_imc(jogador))
+        self.assertEqual(expected_bmi, self.bmi_entity.calculate_bmi(player))

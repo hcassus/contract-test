@@ -1,58 +1,55 @@
 """
-Jogadores devem ter mais de 1.70m
-Jogadores devem pesar menos de 130 Kg
-Jogadores devem ter um IMC entre 21 e 26
+Players must be taller than 1.70m
+Players must weigh less than 130 Kg
+Players' BMI must be between 21 and 26
 """
 
-jogador_exemplo = {'nome': 'nome', 'altura_cm': 0, 'peso_kg': 0}
+class HeightEntity(object):
+
+    def get_height_in_meters(self, player):
+        return float(player['height_cm']) / 100
 
 
-class AlturaEntity(object):
+class WeightEntity(object):
 
-    def obter_altura_em_metro(self, jogador):
-        return float(jogador['altura_cm']) / 100
-
-
-class PesoEntity(object):
-
-    def obter_peso_jogador(self, jogador):
-        return jogador['peso_kg']
+    def get_weight(self, player):
+        return player['weight_kg']
 
 
-class ImcEntity(object):
+class BmiEntity(object):
 
-    def __init__(self, altura_entity, peso_entity):
-        self.altura_entity = altura_entity
-        self.peso_entity = peso_entity
-
-
-    def calcular_imc(self, jogador):
-        altura_jogador = self.altura_entity.obter_altura_em_metro(jogador)
-        peso_jogador = self.peso_entity.obter_peso_jogador(jogador)
-        return round(peso_jogador / (altura_jogador ** 2), 2)
+    def __init__(self, height_entity, weight_entity):
+        self.height_entity = height_entity
+        self.weight_entity = weight_entity
 
 
-class SelecaoJogadorUsecase(object):
+    def calculate_bmi(self, player):
+        player_height = self.height_entity.get_height_in_meters(player)
+        player_weight = self.weight_entity.get_weight(player)
+        return round(player_weight / (player_height ** 2), 2)
 
-    def __init__(self, altura_entity, peso_entity, imc_entity):
-        self.altura_entity = altura_entity
-        self.peso_entity = peso_entity
-        self.imc_entity = imc_entity
 
-    def selecionar_jogador(self, jogador):
-        altura_jogador = self.altura_entity.obter_altura_em_metro(jogador)
-        peso_jogador = self.peso_entity.obter_peso_jogador(jogador)
-        imc = self.imc_entity.calcular_imc(jogador)
+class SelectPlayerUsecase(object):
 
-        if altura_jogador < 1.7:
-            mensagem = "Jogador muito baixo (" + str(altura_jogador) + ")"
-        elif peso_jogador > 130:
-            mensagem = "Jogador muito pesado (" + str(peso_jogador) + ")"
-        elif imc < 21:
-            mensagem = "Jogador com IMC muito baixo (" + str(imc) + ")"
-        elif imc > 26:
-            mensagem = "Jogador com IMC muito alto (" + str(imc) + ")"
+    def __init__(self, height_entity, weight_entity, bmi_entity):
+        self.height_entity = height_entity
+        self.weight_entity = weight_entity
+        self.bmi_entity = bmi_entity
+
+    def select_player(self, player):
+        player_height = self.height_entity.get_height_in_meters(player)
+        player_weight = self.weight_entity.get_weight(player)
+        bmi = self.bmi_entity.calculate_bmi(player)
+
+        if player_height < 1.7:
+            message = "Player is too short (" + str(player_height) + ")"
+        elif player_weight > 130:
+            message = "Player is too heavy (" + str(player_weight) + ")"
+        elif bmi < 21:
+            message = "Player's BMI is too low (" + str(bmi) + ")"
+        elif bmi > 26:
+            message = "Player's BMI is too high (" + str(bmi) + ")"
         else:
-            mensagem = "Jogador selecionado"
+            message = "Player was successfully selected"
 
-        return mensagem
+        return message
