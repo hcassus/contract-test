@@ -55,27 +55,27 @@ class SelectPlayerUnitTests(TestCase):
         when(self.height_entity.get_height_in_meters).called_with(player).then(ONE_POINT_SIX_METERS)
         self.assertEqual("Player is too short (1.6)", self.select_player.select_player(player))
 
-    def test_peso_muito_alto(self):
+    def test_player_too_heavy(self):
         player = PLAYER_170_140
         when(self.height_entity.get_height_in_meters).called_with(player).then(ONE_POINT_SEVEN_METERS)
         when(self.weight_entity.get_weight).called_with(player).then(ONE_HUNDRED_FORTY_KILOS)
         self.assertEqual("Player is too heavy (140)", self.select_player.select_player(player))
 
-    def test_imc_muito_baixo(self):
+    def test_low_bmi(self):
         jogador = PLAYER_170_57
         when(self.height_entity.get_height_in_meters).called_with(jogador).then(ONE_POINT_SEVEN_METERS)
         when(self.weight_entity.get_weight).called_with(jogador).then(FIFTY_SEVEN_KILOS)
         when(self.bmi_entity.calculate_bmi).called_with(jogador).then(BMI_NINETEEN_POINT_SEVENTY_TWO)
         self.assertEqual("Player's BMI is too low (19.72)", self.select_player.select_player(jogador))
 
-    def test_imc_muito_alto(self):
+    def test_high_bmi(self):
         jogador = PLAYER_170_76
         when(self.height_entity.get_height_in_meters).called_with(jogador).then(ONE_POINT_SEVEN_METERS)
         when(self.weight_entity.get_weight).called_with(jogador).then(SEVENTY_SIX_KILOS)
         when(self.bmi_entity.calculate_bmi).called_with(jogador).then(BMI_TWENTY_SIX_POINT_THREE)
         self.assertEqual("Player's BMI is too high (26.3)", self.select_player.select_player(jogador))
 
-    def test_jogador_selecionado(self):
+    def test_selected_player(self):
         jogador = PLAYER_170_72
         when(self.height_entity.get_height_in_meters).called_with(jogador).then(ONE_POINT_SEVEN_METERS)
         when(self.weight_entity.get_weight).called_with(jogador).then(SEVENTY_TWO_KILOS)
