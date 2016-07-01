@@ -42,13 +42,13 @@ class SelectPlayerUsecase(object):
         bmi = self.bmi_entity.calculate_bmi(player)
 
         if player_height < 1.7:
-            message = "Player is too short (" + str(player_height) + ")"
+            message = "Player is too short ({0})".format(str(player_height))
         elif player_weight > 130:
-            message = "Player is too heavy (" + str(player_weight) + ")"
+            message = "Player is too heavy ({0})".format(str(player_weight))
         elif bmi < 21:
-            message = "Player's BMI is too low (" + str(bmi) + ")"
+            message = "Player's BMI is too low ({0})".format(str(bmi))
         elif bmi > 26:
-            message = "Player's BMI is too high (" + str(bmi) + ")"
+            message = "Player's BMI is too high ({0})".format(str(bmi))
         else:
             message = "Player was successfully selected"
 
