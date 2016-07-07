@@ -1,7 +1,7 @@
 from unittest.case import TestCase
 
 from ddt import ddt, unpack, data
-from unittest.mock import create_autospec
+from mock.mock import create_autospec
 from mockextras import when
 
 from .contract_constants import *

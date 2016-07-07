@@ -1,6 +1,6 @@
 from unittest.case import TestCase
 
-from unittest.mock import create_autospec
+from mock.mock import create_autospec
 from mockextras import when
 
 from .contract_constants import *
