@@ -6,6 +6,8 @@ from mockextras import when
 from .contract_constants import *
 from .production_code import *
 
+_multiprocess_can_split_ = True
+
 
 class WeightUnitTests(TestCase):
 
@@ -59,7 +61,7 @@ class SelectPlayerUnitTests(TestCase):
         player = PLAYER_170_131
         when(self.height_entity.get_height_in_meters).called_with(player).then(ONE_POINT_SEVEN_METERS)
         when(self.weight_entity.get_weight).called_with(player).then(ONE_HUNDRED_THIRTY_ONE)
-        when(self.bmi_entity.calculate_bmi).called_with(player).then(45.33)
+        when(self.bmi_entity.calculate_bmi).called_with(player).then(BMI_FORTY_FIVE_POINT_THIRTY_THREE)
         self.assertEqual("Player is too heavy (131)", self.select_player.select_player(player))
 
     def test_player_too_heavy_limit(self):
